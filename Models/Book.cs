@@ -27,5 +27,8 @@ namespace FPTBook.Models
         [Required(ErrorMessage = "This field cannot be empty")]
         [Range(1, 999, ErrorMessage = "Max is 999, min is 1")]
         public int Quantity { get; set; }
+
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }
