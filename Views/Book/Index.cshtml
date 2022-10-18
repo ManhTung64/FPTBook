@@ -1,0 +1,64 @@
+﻿@model List<Book>
+
+@if (TempData["Message"] != null)
+{
+    <h5 class="alert alert-info">@TempData["Message"]</h5>
+}
+
+@if (Model.Count == 0)
+{
+    <h2 class="alert alert-danger">No book in DB. Add book first !</h2>
+    <a class="btn btn-success" asp-controller="Book" asp-action="Add">
+        Add
+    </a>
+}
+else
+{
+    <div class="container text-center">
+        <table class="table table-bordered text-center bg-light">
+            <tr>
+                <th class="h3 text-center" colspan="6">Book List </th>
+                <th class="">
+                    <a class="btn btn-success" asp-controller="Book" asp-action="Add">
+                        Add
+                    </a>
+                </th>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Menu</th>
+            </tr>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Id</td>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.Year.ToString()</td>
+                    <td>@book.Price</td>
+                    <td>
+                        <a asp-controller="Book" asp-action="Detail" asp-route-id="@book.Id">
+                            <img src="@book.Image" width="100" dsds height="100" />
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" asp-controller="Book" asp-action="Edit" asp-route-id="@book.Id">
+                            Edit
+                        </a>
+                        <a class="btn btn-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@book.Id"
+                   onclick="return confirm('Are you sure to delete this student?');">
+                            Delete
+                        </a>
+
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+
