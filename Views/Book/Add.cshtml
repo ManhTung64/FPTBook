@@ -1,0 +1,62 @@
+﻿@model FPTBook.Models.Book
+
+<form method="post" asp-controller="Book" asp-action="Add">
+    <h2>Add new Book</h2>
+    <div class="form-group">
+        <label class="h4 text-success">Title</label>
+        <input class="form-control" asp-for="@Model.Title" />
+        <span class="text-danger" asp-validation-for="@Model.Title"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.Author"></label>
+        <input class="form-control" asp-for="@Model.Author" />
+        <span class="text-danger" asp-validation-for="@Model.Author"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.Publisher"></label>
+        <input class="form-control" asp-for="@Model.Publisher" />
+        <span class="text-danger" asp-validation-for="@Model.Publisher"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.Year"></label>
+        <input class="form-control" asp-for="@Model.Year" />
+        <span class="text-danger" asp-validation-for="@Model.Year"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.Page"></label>
+        <input class="form-control" asp-for="@Model.Page" />
+        <span class="text-danger" asp-validation-for="@Model.Page"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success">Price</label>
+        <input class="form-check" asp-for="@Model.Price" />
+        <span class="text-danger" asp-validation-for="@Model.Price"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success">Quantity</label>
+        <input class="form-check" asp-for="@Model.Quantity" />
+        <span class="text-danger" asp-validation-for="@Model.Quantity"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.Image"></label>
+        <input class="form-control" asp-for="@Model.Image" />
+        <span class="text-danger" asp-validation-for="@Model.Image"></span>
+    </div>
+    @* bổ sung phần nhập thông tin cho Category*@
+    <div class="form-group">
+        <label class="h4 text-success">Category Name</label>
+        <select class="list-group-item" asp-for="CategoryId">
+            <option>Select an category</option>
+            @foreach (var category in ViewBag.Categories)
+            {
+                <option value="@category.Id">
+                    @category.Name
+                </option>
+            }
+        </select>
+        <span class="text-danger" asp-validation-for="CategoryId"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-warning" value="Add" />
+    </div>
+</form>

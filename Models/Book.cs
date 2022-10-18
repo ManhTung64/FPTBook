@@ -21,10 +21,10 @@ namespace FPTBook.Models
         public string Publisher { get; set; }
 
         [Required(ErrorMessage = "This field cannot be empty")]
-        [DateValidation(ErrorMessage = "Year is invalid")]
+        //[DateValidation(ErrorMessage = "Year is invalid")]
         public int Year { get; set; }
 
-        [Range(1,999999,ErrorMessage = "Max is 99999, min is 1")]
+        [Range(1, 999999, ErrorMessage = "Max is 99999, min is 1")]
         public int Page { get; set; }
 
         [Required(ErrorMessage = "This field cannot be empty")]
@@ -34,6 +34,9 @@ namespace FPTBook.Models
         [Required(ErrorMessage = "This field cannot be empty")]
         [Range(1, 999, ErrorMessage = "Max is 999, min is 1")]
         public int Quantity { get; set; }
+
+        [Required(ErrorMessage = "This field cannot be empty")]
+        public string Image { get; set; }
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }
