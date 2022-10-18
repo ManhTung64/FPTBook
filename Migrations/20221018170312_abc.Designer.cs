@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FPTBook.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221018083921_FPTBook")]
-    partial class FPTBook
+    [Migration("20221018170312_abc")]
+    partial class abc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,6 +63,47 @@ namespace FPTBook.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Author = "Manh Tung",
+                            CategoryId = 3,
+                            Image = "https://image.lag.vn/upload/news/17/12/16/lien_quan_mobile_top_5_trang_bi_manh_nhung_it_dung_5_VJXG.JPG",
+                            Page = 99,
+                            Price = 199.0,
+                            Publisher = "Manh Tung",
+                            Quantity = 5,
+                            Title = "How to have megakill",
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Author = "Manh Tung",
+                            CategoryId = 2,
+                            Image = "https://lienquan.garena.vn/files/items/icon/13b087b42ee35a7138a782d260cff7c9583eb099e321d.png",
+                            Page = 49,
+                            Price = 195.0,
+                            Publisher = "Manh Tung",
+                            Quantity = 10,
+                            Title = "How to defeat",
+                            Year = 2020
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Author = "Manh Tung",
+                            CategoryId = 1,
+                            Image = "https://lienquan.garena.vn/files/items/icon/13b087b42ee35a7138a782d260cff7c9583eb099e321d.png",
+                            Page = 49,
+                            Price = 195.0,
+                            Publisher = "Manh Tung",
+                            Quantity = 10,
+                            Title = "You are mine",
+                            Year = 2019
+                        });
                 });
 
             modelBuilder.Entity("FPTBook.Models.Category", b =>
@@ -85,6 +126,26 @@ namespace FPTBook.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "18+",
+                            Name = "Horror"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "12+",
+                            Name = "Manga"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "everyone",
+                            Name = "Science"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
