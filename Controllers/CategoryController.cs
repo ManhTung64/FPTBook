@@ -19,8 +19,43 @@ namespace FPTBook.Controllers
 
         public IActionResult Index()
         {
-            var categories = context.Categories.ToList();
-            return View(categories);
+            return View(context.Categories.ToList());
+        }
+
+        public IActionResult Detail(int id)
+        {
+            return View(context.Categories.Include(book => book.books).FirstOrDefault(category => category.Id == id));
+        }
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            return View(context.Categories.Find(id));
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Categories.Update(category);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(category);
+        }
+
+        public IActionResult Remove(int id)
+        {
+            context.Categories.Remove(context.Categories.Find(id));
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
         public IActionResult SendRequest(Request category)
         {
@@ -33,34 +68,6 @@ namespace FPTBook.Controllers
             }
             return View(category);
         }
-        [Authorize(Roles = "admin")]
-        public IActionResult ListRequest()
-        {
-            var requests = context.Requests.ToList();
-            if (requests.Count == 0) return View();
-            TempData["message"] = "not request";
-            return View();
-        }
-        public IActionResult ConfirmRequest(int? id)
-        {
-            if (id == null) return NotFound();
-            return View(context.Requests.Find(id));
-        }
-        public IActionResult Remove(int id)
-        {
-            var university = context.Categories.Find(id);
-            context.Categories.Remove(university);
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        public IActionResult Add()
-        {
-            return View();
-        }
-
-        [HttpPost]
         public IActionResult Add(Request category)
         {
             if (ModelState.IsValid)
@@ -73,40 +80,31 @@ namespace FPTBook.Controllers
             }
             return View(category);
         }
+        private Category ConvertData(Request request)
+        {
+            return new Category { Id = request.Id, Name = request.Name, Description = request.Description };
+        }
+        [HttpPost]
+
         public IActionResult RemoveRequest(int? id)
         {
-            if(id == null) return NotFound();
+            if (id == null) return NotFound();
             context.Requests.Remove(context.Requests.Find(id));
             TempData["message"] = "Delete successful";
             return RedirectToAction("ListRequest");
         }
-        private Category ConvertData(Request request)
+        public IActionResult ConfirmRequest(int? id)
         {
-            return new Category { Id =  request.Id, Name = request.Name,Description = request.Description};
+            if (id == null) return NotFound();
+            return View(context.Requests.Find(id));
         }
-        [HttpGet]
-        public IActionResult Edit(int id)
+        [Authorize(Roles = "admin")]
+        public IActionResult ListRequest()
         {
-            var category = context.Categories.Find(id);
-            return View(category);
-        }
-
-        [HttpPost]
-        public IActionResult Edit(Category category)
-        {
-            //kiểm tra thông tin nhập vào từ form
-            if (ModelState.IsValid)
-            {
-                //nếu hợp lệ thì cập nhật vào db
-                context.Categories.Update(category);
-                //lưu thay đổi vào db
-                context.SaveChanges();
-                //return về trang index
-                return RedirectToAction("Index");
-                //return RedirectToAction(nameof(Index));
-            }
-            //nếu không hợp lệ thì quay ngược về form 
-            return View(category);
+            var requests = context.Requests.ToList();
+            if (requests.Count == 0) return View();
+            TempData["message"] = "not request";
+            return View();
         }
     }
 }
