@@ -13,7 +13,7 @@ namespace FPTBook.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "This field cannot be empty")]
-        [StringLength(200, ErrorMessage = "Very long", MinimumLength = 5)]
+        [StringLength(200, ErrorMessage = "Very long", MinimumLength = 2)]
         public string Description { get; set; }
 
         public ICollection<Book> books { get; set; }

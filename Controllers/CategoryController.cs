@@ -20,9 +20,34 @@ namespace FPTBook.Controllers
             return View(context.Categories.ToList());
         }
 
+<<<<<<< HEAD
         public IActionResult Detail(int id)
         {
             return View(context.Categories.Include(book => book.books).FirstOrDefault(category => category.Id == id));
+=======
+        /*public IActionResult Info(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var category = context.Categories
+                                    .Include(c => c.books)
+                                    .FirstOrDefault(u => u.Id == id);
+            //Note: khi muốn truy xuất dữ liệu của bảng B từ bảng A
+            //thì cần sử dụng Include kết hợp với FirstOrDefault
+            //còn nếu chỉ truy xuất thông tin id đơn thuần thì sử dụng
+            //Find hoặc FirstOrDefault đều được
+            return View(category);
+        }*/
+
+        public IActionResult Remove(int id)
+        {
+            var university = context.Categories.Find(id);
+            context.Categories.Remove(university);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+>>>>>>> 604c4acbbd2f2348f3fec241e567cb7c20676695
         }
 
         
@@ -47,7 +72,12 @@ namespace FPTBook.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+<<<<<<< HEAD
             return View(context.Categories.Find(id));
+=======
+            var category = context.Categories.Find(id);
+            return View(category);
+>>>>>>> 604c4acbbd2f2348f3fec241e567cb7c20676695
         }
 
         [HttpPost]
@@ -55,10 +85,17 @@ namespace FPTBook.Controllers
         {
             if (ModelState.IsValid)
             {
+<<<<<<< HEAD
                 context.Categories.Update(category);
+=======
+                //nếu hợp lệ thì cập nhật vào db
+                context.Categories.Update(category);
+                //lưu thay đổi vào db
+>>>>>>> 604c4acbbd2f2348f3fec241e567cb7c20676695
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
+<<<<<<< HEAD
             return View(category);
         }
 
@@ -68,5 +105,10 @@ namespace FPTBook.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+=======
+            //nếu không hợp lệ thì quay ngược về form 
+            return View(category);
+        }
+>>>>>>> 604c4acbbd2f2348f3fec241e567cb7c20676695
     }
 }
