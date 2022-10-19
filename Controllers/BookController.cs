@@ -10,53 +10,40 @@ namespace FPTBook.Controllers
 {
     public class BookController : Controller
     {
-        //attribute
         private readonly ApplicationDbContext context;
-
-        //constructor (auto-generate : Alt+Enter => Generate constructor)
         public BookController(ApplicationDbContext context)
         {
             this.context = context;
         }
 
         [Route("/")]
+        [Authorize(Roles = "storeOwner")]
         public IActionResult Index()
         {
             return View(context.Books.ToList());
         }
-
+        [Authorize(Roles = "storeOwner")]
         public IActionResult List()
         {
             return View(context.Books.ToList());
         }
-
-        //[Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "storeOwner")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
             {
-                //nếu id không tìm thấy thì trả về not found
                 return NotFound();
             }
             else
             {
-                //tìm ra object student có id được yêu cầu
                 var book = context.Books.Find(id);
-                //xóa object student vừa tìm thấy
                 context.Books.Remove(book);
-                //lưu lại thay đổi trong db
                 context.SaveChanges();
-
-                //gửi thông báo về trang Index
-                //bắt buộc dùng TempData để có thể gửi dữ liệu về View nếu return RedirectToAction
                 TempData["Message"] = "Delete book successfully !";
-
-                //quay trở lại trang index sau khi thành công
-                //return RedirectToAction("Index");
                 return RedirectToAction(nameof(Index));
             }
         }
-
+        [Authorize(Roles = "storeOwner")]
         public IActionResult Detail(int id)
         {
             var book = context.Books
@@ -66,16 +53,16 @@ namespace FPTBook.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "storeOwner")]
         public IActionResult Add()
         {
-            //lấy ra dữ liệu từ bảng University và lưu vào list
             var categories = context.Categories.ToList();
-            //dữ liệu đẩy vào ViewBag để gọi đến trong View
             ViewBag.Categories = categories;
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "storeOwner")]
         public IActionResult Add(Book book)
         {
             if (ModelState.IsValid)
@@ -93,16 +80,16 @@ namespace FPTBook.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "storeOwner")]
         public IActionResult Edit(int id)
         {
-            //lấy ra dữ liệu từ bảng University và lưu vào list
             var categories = context.Categories.ToList();
-            //dữ liệu đẩy vào ViewBag để gọi đến trong View
             ViewBag.Categories = categories;
             return View(context.Books.Find(id));
         }
 
         [HttpPost]
+        [Authorize(Roles = "storeOwner")]
         public IActionResult Edit(Book book)
         {
             if (ModelState.IsValid)

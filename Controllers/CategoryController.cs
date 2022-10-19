@@ -1,8 +1,10 @@
 ﻿using FPTBook.Data;
 using FPTBook.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading;
 
 namespace FPTBook.Controllers
 {
@@ -20,23 +22,30 @@ namespace FPTBook.Controllers
             var categories = context.Categories.ToList();
             return View(categories);
         }
-
-        /*public IActionResult Info(int? id)
+        public IActionResult SendRequest(Request category)
         {
-            if (id == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                context.Requests.Add(category);
+                context.SaveChanges();
+                TempData["message"] = "Send successful, please wait admin access";
+                return RedirectToAction("Index");
             }
-            var category = context.Categories
-                                    .Include(c => c.books)
-                                    .FirstOrDefault(u => u.Id == id);
-            //Note: khi muốn truy xuất dữ liệu của bảng B từ bảng A
-            //thì cần sử dụng Include kết hợp với FirstOrDefault
-            //còn nếu chỉ truy xuất thông tin id đơn thuần thì sử dụng
-            //Find hoặc FirstOrDefault đều được
             return View(category);
-        }*/
-
+        }
+        [Authorize(Roles = "admin")]
+        public IActionResult ListRequest()
+        {
+            var requests = context.Requests.ToList();
+            if (requests.Count == 0) return View();
+            TempData["message"] = "not request";
+            return View();
+        }
+        public IActionResult ConfirmRequest(int? id)
+        {
+            if (id == null) return NotFound();
+            return View(context.Requests.Find(id));
+        }
         public IActionResult Remove(int id)
         {
             var university = context.Categories.Find(id);
@@ -52,23 +61,29 @@ namespace FPTBook.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Category category)
+        public IActionResult Add(Request category)
         {
-            //kiểm tra thông tin nhập vào từ form
             if (ModelState.IsValid)
             {
-                //nếu hợp lệ thì add vào db
-                context.Categories.Add(category);
-                //lưu thay đổi vào db
+                context.Categories.Add(ConvertData(category));
+                context.Requests.Remove(category);
                 context.SaveChanges();
-                //return về trang index
+                TempData["message"] = "Add successful";
                 return RedirectToAction("Index");
-                //return RedirectToAction(nameof(Index));
             }
-            //nếu không hợp lệ thì quay ngược về form 
             return View(category);
         }
-
+        public IActionResult RemoveRequest(int? id)
+        {
+            if(id == null) return NotFound();
+            context.Requests.Remove(context.Requests.Find(id));
+            TempData["message"] = "Delete successful";
+            return RedirectToAction("ListRequest");
+        }
+        private Category ConvertData(Request request)
+        {
+            return new Category { Id =  request.Id, Name = request.Name,Description = request.Description};
+        }
         [HttpGet]
         public IActionResult Edit(int id)
         {
