@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FPTBook.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221018170312_abc")]
-    partial class abc
+    [Migration("20221019073400_FPTBool")]
+    partial class FPTBool
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

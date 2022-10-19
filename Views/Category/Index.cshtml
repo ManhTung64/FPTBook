@@ -1,0 +1,30 @@
+﻿@model List<Category>
+
+<table class="table table-danger">
+    <tr>
+        <th colspan="3">Category List</th>
+        <th>
+            <a class="btn btn-primary" asp-controller="Category" asp-action="Add">Add</a>
+        </th>
+    </tr>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Menu</th>
+    </tr>
+    @foreach (var cate in Model)
+    {
+        <tr>
+            <td>@cate.Id</td>
+            <td>@cate.Name</td>
+            <td>@cate.Description</td>
+            <td>
+                <a asp-controller="Category" asp-action="Edit" class="btn btn-warning"
+               asp-route-id="@cate.Id">Edit</a>
+                <a asp-controller="Category" asp-action="Remove" class="btn btn-danger"
+               asp-route-id="@cate.Id" onclick="return confirm('Are you sure to remove this category ?');">Remove</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FPTBook.Migrations
 {
-    public partial class abc : Migration
+    public partial class FPTBool : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
