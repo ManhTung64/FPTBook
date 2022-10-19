@@ -42,19 +42,11 @@ else
                     <td>@book.Year.ToString()</td>
                     <td>@book.Price</td>
                     <td>
-                        <a asp-controller="Book" asp-action="Detail" asp-route-id="@book.Id">
-                            <img src="@book.Image" width="100" dsds height="100" />
-                        </a>
+                        <a asp-controller="Book" asp-action="Detail" asp-route-id="@book.Id"><img src="@book.Image" width="100" dsds height="100" /></a>
                     </td>
                     <td>
-                        <a class="btn btn-warning" asp-controller="Book" asp-action="Edit" asp-route-id="@book.Id">
-                            Edit
-                        </a>
-                        <a class="btn btn-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@book.Id"
-                   onclick="return confirm('Are you sure to delete this student?');">
-                            Delete
-                        </a>
-
+                        <a class="btn btn-warning" asp-controller="Book" asp-action="Edit" asp-route-id="@book.Id">Edit</a>
+                        <a class="btn btn-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@book.Id" onclick="return confirm('Are you sure to delete this student?');">Delete</a>
                     </td>
                 </tr>
             }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FPTBook.Migrations
 {
-    public partial class abc : Migration
+    public partial class FPTBook : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -194,34 +194,54 @@ namespace FPTBook.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Categories",
-                columns: new[] { "Id", "Description", "Name" },
-                values: new object[] { 1, "18+", "Horror" });
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "admin", "834f5e13-05a5-4cc5-bd8f-294ea31bc889", "Administrator", "Administrator" },
+                    { "customer", "bab678bf-f920-47d1-b8aa-57785d4fe26b", "Customer", "Customer" },
+                    { "storeOwner", "0e7101d6-87ac-4ac2-b39c-a85c2c4dd5b2", "StoreOwner", "StoreOwner" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "1", 0, "474f6abc-f3f4-49bb-a6be-2b1935dabce7", "admin@gmail.com", true, false, null, null, "admin@gmail.com", "AQAAAAEAACcQAAAAEAo18LIgEUT9yVi+9yWsenwAKV/lxEbphG6b4MUCapvVfPjLNPUweQ/wWAXpfJc3Iw==", null, false, "4f87e4f3-d860-4457-8d80-00fa44e8aa46", false, "admin@gmail.com" },
+                    { "2", 0, "f2ce1d71-bce4-48cc-9696-bdbebb6684f0", "customer@gmail.com", true, false, null, null, "customer@gmail.com", "AQAAAAEAACcQAAAAEPW54T1HEOFV/Ja1lWrsPSe4buE8FOs4IC/LrLPdqZofrmVqVzTdC8V0BAS767556A==", null, false, "bffdbbe5-9e68-4a8f-9bac-093436a86951", false, "customer@gmail.com" },
+                    { "3", 0, "c3effb8f-a3b3-47fa-a949-82bb12e12e45", "storeOwner@gmail.com", true, false, null, null, "storeOwner@gmail.com", "AQAAAAEAACcQAAAAEM7KcZfQ6LfLFr31EJ3fbRv2WoGG/f3rIdCLqI71yF4doJ7PXblbf/uAxZWCPPVXWw==", null, false, "51cea85e-6565-4b9f-8b2f-9832a2cc8e14", false, "storeOwner@gmail.com" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "Description", "Name" },
-                values: new object[] { 2, "12+", "Manga" });
+                values: new object[,]
+                {
+                    { 1, "18+", "Horror" },
+                    { 2, "12+", "Manga" },
+                    { 3, "everyone", "Science" }
+                });
 
             migrationBuilder.InsertData(
-                table: "Categories",
-                columns: new[] { "Id", "Description", "Name" },
-                values: new object[] { 3, "everyone", "Science" });
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new object[,]
+                {
+                    { "1", "admin" },
+                    { "2", "customer" },
+                    { "3", "storeOwner" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Books",
                 columns: new[] { "Id", "Author", "CategoryId", "Image", "Page", "Price", "Publisher", "Quantity", "Title", "Year" },
-                values: new object[] { 3, "Manh Tung", 1, "https://lienquan.garena.vn/files/items/icon/13b087b42ee35a7138a782d260cff7c9583eb099e321d.png", 49, 195.0, "Manh Tung", 10, "You are mine", 2019 });
-
-            migrationBuilder.InsertData(
-                table: "Books",
-                columns: new[] { "Id", "Author", "CategoryId", "Image", "Page", "Price", "Publisher", "Quantity", "Title", "Year" },
-                values: new object[] { 2, "Manh Tung", 2, "https://lienquan.garena.vn/files/items/icon/13b087b42ee35a7138a782d260cff7c9583eb099e321d.png", 49, 195.0, "Manh Tung", 10, "How to defeat", 2020 });
-
-            migrationBuilder.InsertData(
-                table: "Books",
-                columns: new[] { "Id", "Author", "CategoryId", "Image", "Page", "Price", "Publisher", "Quantity", "Title", "Year" },
-                values: new object[] { 1, "Manh Tung", 3, "https://image.lag.vn/upload/news/17/12/16/lien_quan_mobile_top_5_trang_bi_manh_nhung_it_dung_5_VJXG.JPG", 99, 199.0, "Manh Tung", 5, "How to have megakill", 2022 });
+                values: new object[,]
+                {
+                    { 3, "Manh Tung", 1, "https://lienquan.garena.vn/files/items/icon/13b087b42ee35a7138a782d260cff7c9583eb099e321d.png", 49, 195.0, "Manh Tung", 10, "You are mine", 2019 },
+                    { 2, "Manh Tung", 2, "https://lienquan.garena.vn/files/items/icon/13b087b42ee35a7138a782d260cff7c9583eb099e321d.png", 49, 195.0, "Manh Tung", 10, "How to defeat", 2020 },
+                    { 1, "Manh Tung", 3, "https://image.lag.vn/upload/news/17/12/16/lien_quan_mobile_top_5_trang_bi_manh_nhung_it_dung_5_VJXG.JPG", 99, 199.0, "Manh Tung", 5, "How to have megakill", 2022 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

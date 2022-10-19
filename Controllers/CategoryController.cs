@@ -17,34 +17,15 @@ namespace FPTBook.Controllers
 
         public IActionResult Index()
         {
-            var categories = context.Categories.ToList();
-            return View(categories);
+            return View(context.Categories.ToList());
         }
 
-        public IActionResult Info(int? id)
+        public IActionResult Detail(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var category = context.Categories
-                                    .Include(c => c.books)
-                                    .FirstOrDefault(u => u.Id == id);
-            //Note: khi muốn truy xuất dữ liệu của bảng B từ bảng A
-            //thì cần sử dụng Include kết hợp với FirstOrDefault
-            //còn nếu chỉ truy xuất thông tin id đơn thuần thì sử dụng
-            //Find hoặc FirstOrDefault đều được
-            return View(category);
+            return View(context.Categories.Include(book => book.books).FirstOrDefault(category => category.Id == id));
         }
 
-        public IActionResult Remove(int id)
-        {
-            var university = context.Categories.Find(id);
-            context.Categories.Remove(university);
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
+        
         [HttpGet]
         public IActionResult Add()
         {
@@ -54,44 +35,38 @@ namespace FPTBook.Controllers
         [HttpPost]
         public IActionResult Add(Category category)
         {
-            //kiểm tra thông tin nhập vào từ form
             if (ModelState.IsValid)
             {
-                //nếu hợp lệ thì add vào db
                 context.Categories.Add(category);
-                //lưu thay đổi vào db
                 context.SaveChanges();
-                //return về trang index
                 return RedirectToAction("Index");
-                //return RedirectToAction(nameof(Index));
             }
-            //nếu không hợp lệ thì quay ngược về form 
             return View(category);
         }
 
-        /*[HttpGet]
+        [HttpGet]
         public IActionResult Edit(int id)
         {
-            var university = context.Universities.Find(id);
-            return View(university);
+            return View(context.Categories.Find(id));
         }
 
         [HttpPost]
-        public IActionResult Edit(University university)
+        public IActionResult Edit(Category category)
         {
-            //kiểm tra thông tin nhập vào từ form
             if (ModelState.IsValid)
             {
-                //nếu hợp lệ thì cập nhật vào db
-                context.Universities.Update(university);
-                //lưu thay đổi vào db
+                context.Categories.Update(category);
                 context.SaveChanges();
-                //return về trang index
                 return RedirectToAction("Index");
-                //return RedirectToAction(nameof(Index));
             }
-            //nếu không hợp lệ thì quay ngược về form 
-            return View(university);
-        }*/
+            return View(category);
+        }
+
+        public IActionResult Remove(int id)
+        {
+            context.Categories.Remove(context.Categories.Find(id));
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
