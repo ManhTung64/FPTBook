@@ -44,7 +44,7 @@ namespace FPTBook.Controllers
             {
                 context.Books.Add(book);
                 context.SaveChanges();
-                TempData["Message"] = "Add book successfully !";
+                TempData["Message"] = "Add book successfully!";
                 return RedirectToAction("Index");
             }
             else

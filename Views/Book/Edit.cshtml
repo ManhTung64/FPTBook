@@ -43,11 +43,10 @@
         <input class="form-control" asp-for="@Model.Image" />
         <span class="text-danger" asp-validation-for="@Model.Image"></span>
     </div>
-    @* bổ sung phần nhập thông tin cho Category*@
     <div class="form-group">
         <label class="h4 text-success">Category Name</label>
         <select class="list-group-item" asp-for="CategoryId">
-            <option>Select an category</option>
+            <option value="0">Select an category</option>
             @foreach (var category in ViewBag.Categories)
             {
                 <option value="@category.Id">
