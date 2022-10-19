@@ -10,8 +10,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FPTBook.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
+<<<<<<<< HEAD:Migrations/20221019074633_FPTBook.Designer.cs
+    [Migration("20221019074633_FPTBook")]
+    partial class FPTBook
+========
     [Migration("20221019073400_FPTBool")]
     partial class FPTBool
+>>>>>>>> 604c4acbbd2f2348f3fec241e567cb7c20676695:Migrations/20221019073400_FPTBool.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -173,6 +178,29 @@ namespace FPTBook.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "admin",
+                            ConcurrencyStamp = "834f5e13-05a5-4cc5-bd8f-294ea31bc889",
+                            Name = "Administrator",
+                            NormalizedName = "Administrator"
+                        },
+                        new
+                        {
+                            Id = "customer",
+                            ConcurrencyStamp = "bab678bf-f920-47d1-b8aa-57785d4fe26b",
+                            Name = "Customer",
+                            NormalizedName = "Customer"
+                        },
+                        new
+                        {
+                            Id = "storeOwner",
+                            ConcurrencyStamp = "0e7101d6-87ac-4ac2-b39c-a85c2c4dd5b2",
+                            Name = "StoreOwner",
+                            NormalizedName = "StoreOwner"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -262,6 +290,53 @@ namespace FPTBook.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "474f6abc-f3f4-49bb-a6be-2b1935dabce7",
+                            Email = "admin@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "admin@gmail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAo18LIgEUT9yVi+9yWsenwAKV/lxEbphG6b4MUCapvVfPjLNPUweQ/wWAXpfJc3Iw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "4f87e4f3-d860-4457-8d80-00fa44e8aa46",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f2ce1d71-bce4-48cc-9696-bdbebb6684f0",
+                            Email = "customer@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "customer@gmail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPW54T1HEOFV/Ja1lWrsPSe4buE8FOs4IC/LrLPdqZofrmVqVzTdC8V0BAS767556A==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "bffdbbe5-9e68-4a8f-9bac-093436a86951",
+                            TwoFactorEnabled = false,
+                            UserName = "customer@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c3effb8f-a3b3-47fa-a949-82bb12e12e45",
+                            Email = "storeOwner@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "storeOwner@gmail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM7KcZfQ6LfLFr31EJ3fbRv2WoGG/f3rIdCLqI71yF4doJ7PXblbf/uAxZWCPPVXWw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "51cea85e-6565-4b9f-8b2f-9832a2cc8e14",
+                            TwoFactorEnabled = false,
+                            UserName = "storeOwner@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -325,6 +400,23 @@ namespace FPTBook.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "1",
+                            RoleId = "admin"
+                        },
+                        new
+                        {
+                            UserId = "2",
+                            RoleId = "customer"
+                        },
+                        new
+                        {
+                            UserId = "3",
+                            RoleId = "storeOwner"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

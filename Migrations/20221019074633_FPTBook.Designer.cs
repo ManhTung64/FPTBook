@@ -4,14 +4,21 @@ using FPTBook.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FPTBook.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+<<<<<<<< HEAD:Migrations/20221019074633_FPTBook.Designer.cs
+    [Migration("20221019074633_FPTBook")]
+    partial class FPTBook
+========
+    [Migration("20221019073400_FPTBool")]
+    partial class FPTBool
+>>>>>>>> 604c4acbbd2f2348f3fec241e567cb7c20676695:Migrations/20221019073400_FPTBool.Designer.cs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -176,21 +183,21 @@ namespace FPTBook.Migrations
                         new
                         {
                             Id = "admin",
-                            ConcurrencyStamp = "10abcbe3-3729-4310-97d9-9b633549393b",
+                            ConcurrencyStamp = "834f5e13-05a5-4cc5-bd8f-294ea31bc889",
                             Name = "Administrator",
                             NormalizedName = "Administrator"
                         },
                         new
                         {
                             Id = "customer",
-                            ConcurrencyStamp = "7e4010f9-d581-4fc1-a024-894e1c8c4575",
+                            ConcurrencyStamp = "bab678bf-f920-47d1-b8aa-57785d4fe26b",
                             Name = "Customer",
                             NormalizedName = "Customer"
                         },
                         new
                         {
                             Id = "storeOwner",
-                            ConcurrencyStamp = "033d392d-ed52-463b-8e51-7d3aa5136082",
+                            ConcurrencyStamp = "0e7101d6-87ac-4ac2-b39c-a85c2c4dd5b2",
                             Name = "StoreOwner",
                             NormalizedName = "StoreOwner"
                         });
@@ -289,14 +296,14 @@ namespace FPTBook.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "81c33a71-d4bc-4907-b9db-6726a5ef820c",
+                            ConcurrencyStamp = "474f6abc-f3f4-49bb-a6be-2b1935dabce7",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "admin@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHDKw6Fjx26jUUO4F2J3gmVqn0UpYI+3sI0pDBaZwhgmTh9WOjfh13K6xV/t0SRx+Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAo18LIgEUT9yVi+9yWsenwAKV/lxEbphG6b4MUCapvVfPjLNPUweQ/wWAXpfJc3Iw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a3ea4f74-f345-4e6d-8b07-68311fbd3835",
+                            SecurityStamp = "4f87e4f3-d860-4457-8d80-00fa44e8aa46",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         },
@@ -304,14 +311,14 @@ namespace FPTBook.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2c9fd264-0fbb-4248-8ba8-1fd855089c98",
+                            ConcurrencyStamp = "f2ce1d71-bce4-48cc-9696-bdbebb6684f0",
                             Email = "customer@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "customer@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIDWesccyALCAjdZc+IpWvyAga8oqB1zlBjE326GDFlsguomfvcSzjdTKWi70npkdA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPW54T1HEOFV/Ja1lWrsPSe4buE8FOs4IC/LrLPdqZofrmVqVzTdC8V0BAS767556A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0eb5b531-7e05-491a-b1a5-f0df7f6c9df0",
+                            SecurityStamp = "bffdbbe5-9e68-4a8f-9bac-093436a86951",
                             TwoFactorEnabled = false,
                             UserName = "customer@gmail.com"
                         },
@@ -319,14 +326,14 @@ namespace FPTBook.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dcdeab36-f341-4ff3-8ab0-8c295eeeefa1",
+                            ConcurrencyStamp = "c3effb8f-a3b3-47fa-a949-82bb12e12e45",
                             Email = "storeOwner@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "storeOwner@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKxfcnuFb1SPgHRyza64OmOrL4digA0s3KfBC5Y8RPiG9moNYH+w5lR+z/+uTrv+kQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM7KcZfQ6LfLFr31EJ3fbRv2WoGG/f3rIdCLqI71yF4doJ7PXblbf/uAxZWCPPVXWw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "978f17b8-d625-4296-b8e6-d8a58c805836",
+                            SecurityStamp = "51cea85e-6565-4b9f-8b2f-9832a2cc8e14",
                             TwoFactorEnabled = false,
                             UserName = "storeOwner@gmail.com"
                         });
