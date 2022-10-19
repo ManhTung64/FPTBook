@@ -17,28 +17,47 @@ namespace FPTBook.Controllers
             this.context = context;
         }
 
+        [Authorize(Roles = "StoreOwner")]
         public IActionResult Index()
         {
             return View(context.Categories.ToList());
         }
 
+        [Authorize(Roles = "StoreOwner")]
         public IActionResult Detail(int id)
         {
             return View(context.Categories.Include(book => book.books).FirstOrDefault(category => category.Id == id));
         }
 
+        [Authorize(Roles = "StoreOwner")]
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult SendRequest()
         {
             return View();
         }
 
+        [Authorize(Roles = "StoreOwner")]
+        [HttpPost]
+        public IActionResult SendRequest(Request request)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Requests.Add(request);
+                context.SaveChanges();
+                TempData["message"] = "Send successful, please wait admin access";
+                return RedirectToAction("Index");
+            }
+            return View(request);
+        }
+
+        [Authorize(Roles = "StoreOwner")]
         [HttpGet]
         public IActionResult Edit(int id)
         {
             return View(context.Categories.Find(id));
         }
 
+        [Authorize(Roles = "StoreOwner")]
         [HttpPost]
         public IActionResult Edit(Category category)
         {
@@ -51,60 +70,50 @@ namespace FPTBook.Controllers
             return View(category);
         }
 
+        [Authorize(Roles = "StoreOwner")]
         public IActionResult Remove(int id)
         {
             context.Categories.Remove(context.Categories.Find(id));
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-        public IActionResult SendRequest(Request category)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Requests.Add(category);
-                context.SaveChanges();
-                TempData["message"] = "Send successful, please wait admin access";
-                return RedirectToAction("Index");
-            }
-            return View(category);
-        }
-        public IActionResult Add(Request category)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Categories.Add(ConvertData(category));
-                context.Requests.Remove(category);
-                context.SaveChanges();
-                TempData["message"] = "Add successful";
-                return RedirectToAction("Index");
-            }
-            return View(category);
-        }
-        private Category ConvertData(Request request)
-        {
-            return new Category { Id = request.Id, Name = request.Name, Description = request.Description };
-        }
-        [HttpPost]
 
-        public IActionResult RemoveRequest(int? id)
-        {
-            if (id == null) return NotFound();
-            context.Requests.Remove(context.Requests.Find(id));
-            TempData["message"] = "Delete successful";
-            return RedirectToAction("ListRequest");
-        }
-        public IActionResult ConfirmRequest(int? id)
-        {
-            if (id == null) return NotFound();
-            return View(context.Requests.Find(id));
-        }
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult ListRequest()
         {
             var requests = context.Requests.ToList();
             if (requests.Count == 0) return View();
             TempData["message"] = "not request";
             return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public IActionResult ConfirmRequest(int id)
+        {
+            return View("SendRequest",context.Requests.Find(id));
+        }
+
+        [HttpPost]
+        public IActionResult ConfirmRequest(Request request)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Categories.Add( new Category { Name = request.Name, Description = request.Description });
+                context.Requests.Remove(request);
+                context.SaveChanges();
+                TempData["message"] = "Add successful";
+                return RedirectToAction("Index");
+            }
+            return View(request);
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public IActionResult RemoveRequest(int id)
+        {
+            context.Requests.Remove(context.Requests.Find(id));
+            TempData["message"] = "Delete successful";
+            return RedirectToAction("ListRequest");
         }
     }
 }
