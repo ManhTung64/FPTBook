@@ -12,5 +12,6 @@ namespace FPTBook.Models
         [Required(ErrorMessage = "This field cannot be empty")]
         [StringLength(200, ErrorMessage = "Very long", MinimumLength = 2)]
         public string Description { get; set; }
+        public string Status { get; set; }
     }
 }
