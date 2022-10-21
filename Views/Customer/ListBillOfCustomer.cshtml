@@ -1,0 +1,13 @@
+﻿@model List<Bill>
+
+    @if(Model.Count == null)
+    {
+        <span>Rong</span>
+    }
+    else{
+        foreach (var item in Model)
+        {
+            @item.Price <span>,</span>
+            
+        }
+    }

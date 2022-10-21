@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FPTBook.Migrations
 {
-    public partial class add : Migration
+    public partial class a : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -208,14 +208,36 @@ namespace FPTBook.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Bills",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false),
+                    Price = table.Column<double>(nullable: false),
+                    CustomerEmail = table.Column<string>(nullable: true),
+                    OrderDate = table.Column<DateTime>(nullable: false),
+                    BookId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bills", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Bills_Books_BookId",
+                        column: x => x.BookId,
+                        principalTable: "Books",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "admin", "0f5cafc1-d186-459b-90ce-d56c7bccd8e2", "Administrator", "Administrator" },
-                    { "customer", "e4d8e357-b323-4fe9-aea7-f382552a3f25", "Customer", "Customer" },
-                    { "storeOwner", "b68dcf8e-b675-48fa-9585-af8aca6093d7", "StoreOwner", "StoreOwner" }
+                    { "admin", "c231f4f4-c654-4d5f-8649-1210a0c5d7ae", "Administrator", "Administrator" },
+                    { "customer", "6915ff26-9b8c-46d5-8746-abb4f64fca98", "Customer", "Customer" },
+                    { "storeOwner", "d8ab5f62-5365-4837-90e6-d0634615fa61", "StoreOwner", "StoreOwner" }
                 });
 
             migrationBuilder.InsertData(
@@ -223,9 +245,9 @@ namespace FPTBook.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "5744c861-fbb4-4d58-be50-d0401fd38f14", "admin@gmail.com", true, false, null, null, "admin@gmail.com", "AQAAAAEAACcQAAAAEAYVejzvT/tfxUdJOEcp/G3rd5gmHku5Bv1i29oRlD3ep4inD0oPr6FnuScKwMI85w==", null, false, "f2d7202b-a5af-4713-81d3-4ce30eef83be", false, "admin@gmail.com" },
-                    { "2", 0, "f93b7bf7-3127-4967-9fe4-8f287a020f1c", "customer@gmail.com", true, false, null, null, "customer@gmail.com", "AQAAAAEAACcQAAAAEGGPDrUl1jIik41WgEFupMsr00SxEj1IqOT++6ICEpI6kqbPvhJpmuyu9jcU7j5g1g==", null, false, "793728e7-11fd-4419-9c8a-f26b82fc254b", false, "customer@gmail.com" },
-                    { "3", 0, "188225bd-dc4a-44fc-bf7e-1dc4c225df6a", "storeOwner@gmail.com", true, false, null, null, "storeOwner@gmail.com", "AQAAAAEAACcQAAAAEAo1cucwRpXArDQ7L8QXeE96gTSKOE/mGYgVwzq/w2uslamP4BSI92qTmzJRMsU+kA==", null, false, "a2f4641b-8403-40ec-b6f6-0365b879b444", false, "storeOwner@gmail.com" }
+                    { "1", 0, "0089d8b9-6355-4b19-809b-809416aa6d3d", "admin@gmail.com", true, false, null, null, "admin@gmail.com", "AQAAAAEAACcQAAAAENOZaEtbD9hCIGns2Dhwu2pHn3XI2D8jnFF88nSEi5JpOQFUCjaVQR9DzAYmHrlkQA==", null, false, "b39251b2-6e29-4fc5-b31d-63f218f4a549", false, "admin@gmail.com" },
+                    { "2", 0, "668ecc06-db09-42c7-8627-4b5a33038cdc", "customer@gmail.com", true, false, null, null, "customer@gmail.com", "AQAAAAEAACcQAAAAEPqSRUDT0m7ZbKooZ2pjMPs7A+tafrWy3y5y4StdOkmCnPTXLpSGWu56zafW4qA7zA==", null, false, "b827798e-8b52-403e-b74c-8dc2d9582143", false, "customer@gmail.com" },
+                    { "3", 0, "8db7dad3-919b-4b00-a1a5-be53de4794c5", "storeOwner@gmail.com", true, false, null, null, "storeOwner@gmail.com", "AQAAAAEAACcQAAAAEODfFh3gmFU80nb+A4oD8z4N6s92/yrEPu9S2aZTPWU/RneHzuRT63JuaBfzGFzkKQ==", null, false, "8dfdc38f-d17c-48c2-9452-46706d61d638", false, "storeOwner@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -298,6 +320,11 @@ namespace FPTBook.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Bills_BookId",
+                table: "Bills",
+                column: "BookId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Books_CategoryId",
                 table: "Books",
                 column: "CategoryId");
@@ -321,7 +348,7 @@ namespace FPTBook.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Books");
+                name: "Bills");
 
             migrationBuilder.DropTable(
                 name: "Requests");
@@ -331,6 +358,9 @@ namespace FPTBook.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Books");
 
             migrationBuilder.DropTable(
                 name: "Categories");

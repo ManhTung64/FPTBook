@@ -2,6 +2,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using FPTBook.Validation;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace FPTBook.Models
 {
@@ -40,5 +42,6 @@ namespace FPTBook.Models
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public ICollection<Bill> Bills { get; set; }
     }
 }
