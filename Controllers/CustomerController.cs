@@ -38,7 +38,7 @@ namespace FPTBook.Controllers
             bill.Id = context.Bills.ToList().Count + 1;
             context.Bills.Add(bill);
             context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ListBillOfCustomer");
         }
         public IActionResult ListBill()
         {
