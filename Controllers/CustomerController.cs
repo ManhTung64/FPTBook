@@ -1,8 +1,10 @@
 ﻿using FPTBook.Data;
 using FPTBook.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FPTBook.Controllers
@@ -47,6 +49,47 @@ namespace FPTBook.Controllers
         public IActionResult ListBillOfCustomer()
         {
             return View(context.Bills.Where(b=>b.CustomerEmail.Equals(User.Identity.Name)).ToList());
+        }
+        public IActionResult ListAccountStoreOwner()
+        {
+            LinkedList<IdentityUser> accounts = new LinkedList<IdentityUser>();
+                var storeOwnerRole = context.UserRoles.Where(s=>s.RoleId.Equals("storeOwner")).ToList();
+                if (storeOwnerRole != null)
+                {
+                    foreach(var item in storeOwnerRole)
+                    {  
+                        accounts.AddLast(context.Users.Find(item.UserId));
+                    }
+                  return View("ListAccount",accounts);
+                }
+               TempData["message"] = "No any account !!!";
+                return View("ListAccount");
+        }
+        public IActionResult ListAccountCustomer()
+        {
+            LinkedList<IdentityUser> accounts = new LinkedList<IdentityUser>();
+            var storeOwnerRole = context.UserRoles.Where(s => s.RoleId.Equals("customer")).ToList();
+            if (storeOwnerRole != null)
+            {
+                foreach (var item in storeOwnerRole)
+                {
+                    accounts.AddLast(context.Users.Find(item.UserId));
+                }
+                return View("ListAccount",accounts);
+            }
+            TempData["message"] = "No any account !!!";
+            return View("ListAccount");
+        }
+        [HttpPost]
+        public IActionResult ChangePassword(string id, string pass)
+        {
+            //var hasher = PasswordHasher<IdentityUser>();
+            
+            var account = context.Users.Find(id);
+            var hasher = new PasswordHasher<IdentityUser>();
+            account.PasswordHash = hasher.HashPassword(account,pass);
+            context.SaveChanges();
+            return RedirectToAction("ListAccountCustomer");
         }
     }
 }

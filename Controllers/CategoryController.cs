@@ -37,21 +37,6 @@ namespace FPTBook.Controllers
         }
 
         [Authorize(Roles = "StoreOwner")]
-        [HttpPost]
-        public IActionResult SendRequest(Request request)
-        {
-            if (ModelState.IsValid)
-            {
-                request.Status = "Pending";
-                context.Requests.Add(request);
-                context.SaveChanges();
-                TempData["message"] = "Send successful, please waiting admin access";
-                return RedirectToAction("ListRequest");
-            }
-            return View(request);
-        }
-
-        [Authorize(Roles = "StoreOwner")]
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -89,6 +74,21 @@ namespace FPTBook.Controllers
                 return View();
             }
             return View(requests);
+        }
+
+        [Authorize(Roles = "StoreOwner")]
+        [HttpPost]
+        public IActionResult SendRequest(Request request)
+        {
+            if (ModelState.IsValid)
+            {
+                request.Status = "Pending";
+                context.Requests.Add(request);
+                context.SaveChanges();
+                TempData["message"] = "Send successful, please waiting admin access";
+                return RedirectToAction("ListRequest");
+            }
+            return View(request);
         }
 
         [Authorize(Roles = "Administrator")]
