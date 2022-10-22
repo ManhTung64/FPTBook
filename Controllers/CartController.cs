@@ -34,7 +34,7 @@ namespace FPTBook.Controllers
             else
             {
                 List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-                int index = isExist(Id);
+                int index = IsBookAdded(Id);
                 if (index != -1)
                 {
                     cart[index].Item_Quantity++;
@@ -51,11 +51,15 @@ namespace FPTBook.Controllers
         public IActionResult Remove(int id)
         {
             List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-            int index = isExist(id);
+            int index = CheckIdOfCartItem(id);
             if (index != -1)
             {
                 cart.RemoveAt(index);
-                cart[index + 1].Id = count--;
+                for (int i =  index; i < cart.Count; i++)
+                {
+                    cart[i].Id = i;
+                }
+                count--;
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
             else
@@ -65,7 +69,20 @@ namespace FPTBook.Controllers
             return RedirectToAction("Index");
         }
 
-        private int isExist(int id)
+        private int CheckIdOfCartItem(int id)
+        {
+            List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            for (int i = 0; i < cart.Count; i++)
+            {
+                if (cart[i].Id.Equals(id))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private int IsBookAdded(int id)
         {
             List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
             for (int i = 0; i < cart.Count; i++)
