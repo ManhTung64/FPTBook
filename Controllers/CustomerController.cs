@@ -65,35 +65,20 @@ namespace FPTBook.Controllers
                TempData["message"] = "No any account !!!";
                 return View();
         }
+        public IActionResult ListAccountCustomer()
+        {
+            LinkedList<IdentityUser> accounts = new LinkedList<IdentityUser>();
+            var storeOwnerRole = context.UserRoles.Where(s => s.RoleId.Equals("customer")).ToList();
+            if (storeOwnerRole != null)
+            {
+                foreach (var item in storeOwnerRole)
+                {
+                    accounts.AddLast(context.Users.Find(item.UserId));
+                }
+                return View(accounts);
+            }
+            TempData["message"] = "No any account !!!";
+            return View();
+        }
     }
 }
-//public IActionResult ListAccountStoreOwner()
-//{
-//    LinkedList<IdentityUser> accounts = new LinkedList<IdentityUser>();
-//    var storeOwnerRole = context.UserRoles.Where(s=>s.RoleId.Equals("storeOwner")).ToList();
-//    if (storeOwnerRole != null)
-//    {
-//        foreach(var item in storeOwnerRole)
-//        {  
-//            accounts.AddLast(context.Users.Find(item.UserId));
-//        }
-//        return View(accounts);
-//    }
-//    TempData["message"] = "No any account !!!";
-//    return View();
-//}
-//public IActionResult ListAccountCustomer()
-//{
-//    LinkedList<IdentityUser> accounts = new LinkedList<IdentityUser>();
-//    var customer = context.UserRoles.Where(s => s.RoleId.Equals("customer")).ToList();
-//    if (customer != null)
-//    {
-//        foreach (var item in customer)
-//        {
-//            accounts.AddLast(context.Users.Find(item.UserId));
-//        }
-//        return View(accounts);
-//    }
-//    TempData["message"] = "No any account !!!";
-//    return View();
-//}
