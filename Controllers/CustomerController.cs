@@ -60,10 +60,10 @@ namespace FPTBook.Controllers
                     {  
                         accounts.AddLast(context.Users.Find(item.UserId));
                     }
-                  return View(accounts);
+                  return View("ListAccount",accounts);
                 }
                TempData["message"] = "No any account !!!";
-                return View();
+                return View("ListAccount");
         }
         public IActionResult ListAccountCustomer()
         {
@@ -75,10 +75,21 @@ namespace FPTBook.Controllers
                 {
                     accounts.AddLast(context.Users.Find(item.UserId));
                 }
-                return View(accounts);
+                return View("ListAccount",accounts);
             }
             TempData["message"] = "No any account !!!";
-            return View();
+            return View("ListAccount");
+        }
+        [HttpPost]
+        public IActionResult ChangePassword(string id, string pass)
+        {
+            //var hasher = PasswordHasher<IdentityUser>();
+            
+            var account = context.Users.Find(id);
+            var hasher = new PasswordHasher<IdentityUser>();
+            account.PasswordHash = hasher.HashPassword(account,pass);
+            context.SaveChanges();
+            return RedirectToAction("ListAccountCustomer");
         }
     }
 }
