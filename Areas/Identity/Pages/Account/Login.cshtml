@@ -17,9 +17,9 @@
                         <hr />
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="form-group text-white">
-                        <label asp-for="Input.Email"></label>
-                            <input asp-for="Input.Email" class="form-control" />
-                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            <label asp-for="Input.Email"></label>
+                                <input asp-for="Input.Email" class="form-control" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
                         </div>
                         <div class="form-group text-white">
                              <label asp-for="Input.Password"></label>
@@ -29,15 +29,13 @@
                             <div class="form-group text-white row mb-4">
                                 <div class="col d-flex justify-content">
                                     <div class="checkbox">
-                                    <label asp-for="Input.RememberMe">
-                                        <input asp-for="Input.RememberMe" />
-                                        @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                    </label>
+                                        <label asp-for="Input.RememberMe">
+                                            <input asp-for="Input.RememberMe" />
+                                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                        </label>
+                                    </div>
                                 </div>
-
-                                
-                                </div>
-                                </div>
+                            </div>
                         </form>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Sign in</button>
@@ -52,14 +50,10 @@
                         </div>
                     </section>
                 </div>
-
-
-
+            </div>
+        </div>
     </div>
-    
 </div>
-</div>
-    </div>
 
 <style>
     #intro {
