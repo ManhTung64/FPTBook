@@ -1,11 +1,13 @@
 ﻿@model List<Book>
-
+@{
+    Layout = "__ClientLayout";
+}
 <main class="cd__main">
     <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative">
         <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
             @foreach (var book in Model)
             {
-                <div class="col hp">
+                <div class="col-3 hp mt-4">
 
                     <div class="card shadow-sm">
                         <a href="#">
