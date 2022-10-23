@@ -59,13 +59,96 @@ namespace FPTBook.Data
                 NormalizedUserName = "storeOwner@gmail.com",
                 EmailConfirmed = true
             };
+            var customer2 = new IdentityUser
+            {
+                Id = "4",
+                UserName = "customer2@gmail.com",
+                Email = "customer2@gmail.com",
+                NormalizedUserName = "customer2@gmail.com",
+                EmailConfirmed = true
+            };
+
+            var storeOwner2 = new IdentityUser
+            {
+                Id = "5",
+                UserName = "storeOwner2@gmail.com",
+                Email = "storeOwner2@gmail.com",
+                NormalizedUserName = "storeOwner2@gmail.com",
+                EmailConfirmed = true
+            };
+            var customer3 = new IdentityUser
+            {
+                Id = "6",
+                UserName = "customer3@gmail.com",
+                Email = "customer3@gmail.com",
+                NormalizedUserName = "customer3@gmail.com",
+                EmailConfirmed = true
+            };
+
+            var storeOwner3 = new IdentityUser
+            {
+                Id = "7",
+                UserName = "storeOwner3@gmail.com",
+                Email = "storeOwner3@gmail.com",
+                NormalizedUserName = "storeOwner3@gmail.com",
+                EmailConfirmed = true
+            };
+            var customer4 = new IdentityUser
+            {
+                Id = "8",
+                UserName = "customer4@gmail.com",
+                Email = "customer4@gmail.com",
+                NormalizedUserName = "customer4@gmail.com",
+                EmailConfirmed = true
+            };
+
+            var storeOwner4 = new IdentityUser
+            {
+                Id = "9",
+                UserName = "storeOwner4@gmail.com",
+                Email = "storeOwner4@gmail.com",
+                NormalizedUserName = "storeOwner4@gmail.com",
+                EmailConfirmed = true
+            };
+            var customer5 = new IdentityUser
+            {
+                Id = "10",
+                UserName = "customer5@gmail.com",
+                Email = "customer5@gmail.com",
+                NormalizedUserName = "customer5@gmail.com",
+                EmailConfirmed = true
+            };
+
+            var storeOwner5 = new IdentityUser
+            {
+                Id = "11",
+                UserName = "storeOwner5@gmail.com",
+                Email = "storeOwner5@gmail.com",
+                NormalizedUserName = "storeOwner5@gmail.com",
+                EmailConfirmed = true
+            };
 
             var hasher = new PasswordHasher<IdentityUser>();
 
             admin.PasswordHash = hasher.HashPassword(admin, "123456");
+
             customer.PasswordHash = hasher.HashPassword(customer, "123456");
             storeOwner.PasswordHash = hasher.HashPassword(storeOwner, "123456");
-            builder.Entity<IdentityUser>().HasData(admin, customer, storeOwner);
+
+            customer2.PasswordHash = hasher.HashPassword(customer2, "123456");
+            storeOwner2.PasswordHash = hasher.HashPassword(storeOwner2, "123456");
+
+            customer3.PasswordHash = hasher.HashPassword(customer3, "123456");
+            storeOwner3.PasswordHash = hasher.HashPassword(storeOwner3, "123456");
+
+            customer4.PasswordHash = hasher.HashPassword(customer4, "123456");
+            storeOwner4.PasswordHash = hasher.HashPassword(storeOwner4, "123456");
+
+            customer5.PasswordHash = hasher.HashPassword(customer5, "123456");
+            storeOwner5.PasswordHash = hasher.HashPassword(storeOwner5, "123456");
+
+            builder.Entity<IdentityUser>().HasData(admin, customer, storeOwner, customer2, 
+                storeOwner2, customer3, storeOwner3, customer4, storeOwner4, customer5, storeOwner5);
         }
 
         private void SeedRole(ModelBuilder builder)
@@ -107,7 +190,42 @@ namespace FPTBook.Data
                 },
                 new IdentityUserRole<string>
                 {
-                    UserId = "3",
+                    UserId = "4",
+                    RoleId = "customer"
+                },
+                new IdentityUserRole<string>
+                {
+                    UserId = "6",
+                    RoleId = "customer"
+                },
+                new IdentityUserRole<string>
+                {
+                    UserId = "8",
+                    RoleId = "customer"
+                },
+                new IdentityUserRole<string>
+                {
+                    UserId = "10",
+                    RoleId = "customer"
+                },
+                new IdentityUserRole<string>
+                {
+                    UserId = "5",
+                    RoleId = "storeOwner"
+                },
+                new IdentityUserRole<string>
+                {
+                    UserId = "7",
+                    RoleId = "storeOwner"
+                },
+                new IdentityUserRole<string>
+                {
+                    UserId = "9",
+                    RoleId = "storeOwner"
+                },
+                new IdentityUserRole<string>
+                {
+                    UserId = "11",
                     RoleId = "storeOwner"
                 }
              );
@@ -126,7 +244,7 @@ namespace FPTBook.Data
                     Page = 99,
                     Price = 199,
                     Quantity = 5,
-                    Image = "https://image.lag.vn/upload/news/17/12/16/lien_quan_mobile_top_5_trang_bi_manh_nhung_it_dung_5_VJXG.JPG",
+                    Image = "sth.png",
                     CategoryId = 3
                 },
                 new Book
@@ -139,7 +257,7 @@ namespace FPTBook.Data
                     Page = 49,
                     Price = 195,
                     Quantity = 10,
-                    Image = "https://lienquan.garena.vn/files/items/icon/13b087b42ee35a7138a782d260cff7c9583eb099e321d.png",
+                    Image = "st.png",
                     CategoryId = 2
                 },
                 new Book
@@ -152,8 +270,242 @@ namespace FPTBook.Data
                     Page = 49,
                     Price = 195,
                     Quantity = 10,
-                    Image = "https://lienquan.garena.vn/files/items/icon/13b087b42ee35a7138a782d260cff7c9583eb099e321d.png",
+                    Image = "sth.png",
                     CategoryId = 1
+                },
+                new Book
+                {
+                    Id = 4,
+                    Title = "One piece vol 1",
+                    Author = "Eichiro Oda",
+                    Publisher = "Eichiro Oda",
+                    Year = 1997,
+                    Page = 200,
+                    Price = 2.19,
+                    Quantity = 15,
+                    Image = "op1.jpg",
+                    CategoryId = 2
+                },
+                new Book
+                {
+                    Id = 5,
+                    Title = "One piece vol 10",
+                    Author = "Eichiro Oda",
+                    Publisher = "Eichiro Oda",
+                    Year = 1998,
+                    Page = 200,
+                    Price = 2.99,
+                    Quantity = 15,
+                    Image = "op2.jpg",
+                    CategoryId = 2
+                },
+                new Book
+                {
+                    Id = 6,
+                    Title = "One piece vol 15",
+                    Author = "Eichiro Oda",
+                    Publisher = "Eichiro Oda",
+                    Year = 1999,
+                    Page = 200,
+                    Price = 2.09,
+                    Quantity = 15,
+                    Image = "op3.jpg",
+                    CategoryId = 2
+                },
+                new Book
+                {
+                    Id = 7,
+                    Title = "One piece vol 16",
+                    Author = "Eichiro Oda",
+                    Publisher = "Eichiro Oda",
+                    Year = 1999,
+                    Page = 200,
+                    Price = 1.99,
+                    Quantity = 7,
+                    Image = "op4.jpg",
+                    CategoryId = 2
+                },
+                new Book
+                {
+                    Id = 8,
+                    Title = "One piece vol 21",
+                    Author = "Eichiro Oda",
+                    Publisher = "Eichiro Oda",
+                    Year = 1999,
+                    Page = 200,
+                    Price = 2.19,
+                    Quantity = 5,
+                    Image = "op5.jpg",
+                    CategoryId = 2
+                },
+                new Book
+                {
+                    Id = 9,
+                    Title = "One piece vol 25",
+                    Author = "Eichiro Oda",
+                    Publisher = "Eichiro Oda",
+                    Year = 1999,
+                    Page = 200,
+                    Price = 2.19,
+                    Quantity = 10,
+                    Image = "op6.jpg",
+                    CategoryId = 2
+                },
+                new Book
+                {
+                    Id = 10,
+                    Title = "Horro1",
+                    Author = "Manh Tung",
+                    Publisher = "Manh Tung",
+                    Year = 2018,
+                    Page = 500,
+                    Price = 197,
+                    Quantity = 1,
+                    Image = "hor1.jpg",
+                    CategoryId = 1
+                },
+                new Book
+                {
+                    Id = 11,
+                    Title = "Monday is tomorrow vol 1",
+                    Author = "Manh Tung",
+                    Publisher = "Manh Tung",
+                    Year = 2020,
+                    Page = 10,
+                    Price = 149,
+                    Quantity = 9,
+                    Image = "hor2.jpg",
+                    CategoryId = 1
+                },
+                new Book
+                {
+                    Id = 12,
+                    Title = "Monday is tomorrow vol 2",
+                    Author = "Joker",
+                    Publisher = "Joker",
+                    Year = 2020,
+                    Page = 10,
+                    Price = 159,
+                    Quantity = 9,
+                    Image = "hor3.jpg",
+                    CategoryId = 1
+                },
+                new Book
+                {
+                    Id = 13,
+                    Title = "Monday is tomorrow vol 3",
+                    Author = "Vladimir Putin",
+                    Publisher = "Manh Tung",
+                    Year = 2021,
+                    Page = 10,
+                    Price = 169,
+                    Quantity = 10,
+                    Image = "hor4.jpg",
+                    CategoryId = 1
+                },
+                new Book
+                {
+                    Id = 14,
+                    Title = "Monday is tomorrow vol 4",
+                    Author = "Vladimir Putin",
+                    Publisher = "Manh Tung",
+                    Year = 2022,
+                    Page = 10,
+                    Price = 169,
+                    Quantity = 10,
+                    Image = "hor5.jpg",
+                    CategoryId = 1
+                },
+                new Book
+                {
+                    Id = 15,
+                    Title = "Monday is tomorrow vol 5",
+                    Author = "Vladimir Putin",
+                    Publisher = "Vladimir Putin",
+                    Year = 2022,
+                    Page = 10,
+                    Price = 99,
+                    Quantity = 10,
+                    Image = "hor6.jpg",
+                    CategoryId = 1
+                },
+                new Book
+                {
+                    Id = 16,
+                    Title = "Be who you want",
+                    Author = "Edison",
+                    Publisher = "Edison",
+                    Year = 1950,
+                    Page = 10,
+                    Price = 599,
+                    Quantity = 100,
+                    Image = "sc1.webp",
+                    CategoryId = 3
+                },
+                new Book
+                {
+                    Id = 17,
+                    Title = "Beeeeeeeeeee",
+                    Author = "Edison second",
+                    Publisher = "Edison",
+                    Year = 1951,
+                    Page = 10,
+                    Price = 5999,
+                    Quantity = 100,
+                    Image = "sc2.webp",
+                    CategoryId = 3
+                },
+                new Book
+                {
+                    Id = 18,
+                    Title = "Hand made",
+                    Author = "PDPT",
+                    Publisher = "Trog non",
+                    Year = 2002,
+                    Page = 100,
+                    Price = 59,
+                    Quantity = 5,
+                    Image = "sc8.webp",
+                    CategoryId = 3
+                },
+                new Book
+                {
+                    Id = 19,
+                    Title = "Geopedia",
+                    Author = "Geoper",
+                    Publisher = "Geoper",
+                    Year = 1991,
+                    Page = 299,
+                    Price = 29.6,
+                    Quantity = 19,
+                    Image = "sc3.webp",
+                    CategoryId = 3
+                },
+                new Book
+                {
+                    Id = 21,
+                    Title = "The sience of can and can't ",
+                    Author = "Sciencer",
+                    Publisher = "Sciencer",
+                    Year = 1997,
+                    Page = 1093,
+                    Price = 225.2,
+                    Quantity = 3,
+                    Image = "sc4.webp",
+                    CategoryId = 3
+                },
+                new Book
+                {
+                    Id = 20,
+                    Title = "Shape history",
+                    Author = "zhongli",
+                    Publisher = "Manh Tung",
+                    Year = 2004,
+                    Page = 999,
+                    Price = 9999,
+                    Quantity = 3,
+                    Image = "sc11.webp",
+                    CategoryId = 3
                 }
                 );
         }
