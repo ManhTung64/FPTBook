@@ -113,5 +113,42 @@ namespace FPTBook.Controllers
             context.SaveChanges();
             return RedirectToAction("ListAccountCustomer");
         }
+
+        
+        public IActionResult SortTitleAsc()
+        {
+            DataCart();
+            return View("Index", context.Books.OrderBy(s => s.Title).ToList());
+        }
+
+        public IActionResult SortTitleDesc()
+        {
+            DataCart();
+            return View("Index", context.Books.OrderByDescending(s => s.Title).ToList());
+        }
+
+        [HttpPost]
+        public IActionResult Search(string keyword)
+        {
+            DataCart();
+            var books = context.Books.Where(s => s.Title.Contains(keyword)).ToList();
+            if (books.Count == 0)
+            {
+                TempData["Message"] = "No student found";
+            }
+            return View("Index", books);
+        }
+
+        public IActionResult SortPriceAsc()
+        {
+            DataCart();
+            return View("Index", context.Books.OrderBy(s => s.Price).ToList());
+        }
+
+        public IActionResult SortPriceDesc()
+        {
+            DataCart();
+            return View("Index", context.Books.OrderByDescending(s => s.Price).ToList());
+        }
     }
 }

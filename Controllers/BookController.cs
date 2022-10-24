@@ -83,5 +83,7 @@ namespace FPTBook.Controllers
             TempData["Message"] = "Delete book successfully !";
             return RedirectToAction("Index");
         }
+
+        
     }
 }
