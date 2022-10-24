@@ -2,6 +2,7 @@
 using FPTBook.Helpers;
 using FPTBook.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,10 +20,18 @@ namespace FPTBook.Controllers
 
         public IActionResult Index()
         {
-            List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart").ToList();
-            return View(cart);
+            DataCart();
+            try
+            {
+                List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart").ToList();
+                return View(cart);
+            }
+            catch(ArgumentNullException a)
+            {
+                TempData["MessageNull"] = "Please add book to your cart !!!";
+                return View();
+            }   
         }
-
         public IActionResult AddToCart(int Id)
         {
             if (SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart") == null)
@@ -124,6 +133,24 @@ namespace FPTBook.Controllers
                 TempData["MessageDecrease"] = "The quantity cannot smaller than 0!";
             }
             return RedirectToAction("Index");
+        }
+        private void DataCart()
+        {
+            ViewBag.Categories = context.Categories.ToList();
+            try
+            {
+                List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart").ToList();
+                for (int i = 0; i < cart.Count && i < 3; i++)
+                {
+                    ViewData["Title" + i + ""] = cart[i].book.Title;
+                    ViewData["Image" + i + ""] = cart[i].book.Image;
+                    ViewBag.count = i + 1;
+                }
+            }
+            catch (ArgumentNullException a)
+            {
+                TempData["MessageNull"] = "Please add book to your cart !!!";
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FPTBook.Data;
+using FPTBook.Helpers;
 using FPTBook.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -17,14 +18,35 @@ namespace FPTBook.Controllers
         {
             this.context = context;
         }
-
+        [Route("/")]
         public IActionResult Index()
         {
+            DataCart();
             return View(context.Books.ToList());
+        }
+        private void DataCart()
+        {
+            ViewBag.Categories = context.Categories.ToList();
+            try
+            {
+                List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart").ToList();
+                for (int i = 0; i < cart.Count && i < 3; i++)
+                {
+                    ViewData["Title" + i + ""] = cart[i].book.Title;
+                    ViewData["Image" + i + ""] = cart[i].book.Image;
+                    ViewBag.count = i + 1;
+                }
+            }
+            catch (ArgumentNullException a)
+            {
+                TempData["MessageNull"] = "Please add book to your cart !!!";
+            }
         }
         [HttpGet]
         public IActionResult CheckOut(int id)
         {
+            DataCart();
+
             var book = context.Books.Find(id);
             ViewBag.Title = book.Title;
             ViewBag.Quantity = book.Quantity;
@@ -63,7 +85,7 @@ namespace FPTBook.Controllers
                   return View("ListAccount",accounts);
                 }
                TempData["message"] = "No any account !!!";
-                return View("ListAccount");
+               return View("ListAccount");
         }
         public IActionResult ListAccountCustomer()
         {
