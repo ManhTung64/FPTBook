@@ -150,5 +150,18 @@ namespace FPTBook.Controllers
             DataCart();
             return View("Index", context.Books.OrderByDescending(s => s.Price).ToList());
         }
+
+        public IActionResult Detail(int id)
+        {
+            return View(context.Books.Include(category => category.Category).FirstOrDefault(book => book.Id == id));
+        }
+
+        public IActionResult Info(int id)
+        {
+            var book = context.Books
+                                 .Include(s => s.Category)
+                                 .FirstOrDefault(s => s.Id == id);
+            return View(book);
+        }
     }
 }
