@@ -7,14 +7,13 @@
         <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
             @foreach (var book in Model)
             {
+                var mol = "#myModal" + book.Id + "";
                 <div class="col-3 hp mt-4">
-
                     <div class="card shadow-sm">
-                        <a data-toggle="modal" data-target="#myModal">
+                            <a data-toggle="modal" data-target="@mol" id="bookId" style="cursor:pointer;">
+                                <input id="int" value="@book.Id" type="hidden">
                             <img src="~/image/@book.Image" class="card-img-top" alt="@book.Title" />
                         </a>
-                                
-                        
                         <div class="label-top shadow-sm bg-danger">
                             <a class="text-white" href="#">New</a>
                         </div>
@@ -52,55 +51,56 @@
         </div>
     </div>
 </main>
-
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-            </div>
-
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-5 col-xs-12">
-                            <div class="modal-tab">
-                                <div class="product-details-large tab-content">
-                                @foreach (var item in Model)
-                                {
-                                    <div class="tab-pane active" id="image-1">
-                                        <img src="~/image/@Html.DisplayFor(modelItem => item.Image)" class="card-img-top" alt="@item.Title" />
-                                        </div>
-                                }
-                                    
-                                
+@foreach(var bookModal in Model)
+{
+    var modal = "myModal" + bookModal.Id + "";
+    <div class="modal fade" id="@modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                <div class="modal-tab">
+                                    <div class="product-details-large tab-content">
+                                        <div class="tab-pane active" id="image-1">
+                                            <img src="~/image/@Html.DisplayFor(modelItem => bookModal.Image)" class="card-img-top" alt="@bookModal.Title" />
+                                            </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-7 col-sm-7 col-xs-12">
-                            <div class="modal-pro-content">
-                            @foreach (var book in Model)
-                            {
-                            <h3>@book.Title</h3>
-                                <div class="price">
-                                <span>$@book.Price</span>
-                                </div>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet.</p>
+                            <div class="col-md-7 col-sm-7 col-xs-12">
+                                <div class="modal-pro-content">
+                                <h3>@bookModal.Title</h3>
+                                    <div class="price">
+                                    <span>$@bookModal.Price</span>
+                                    </div>
+                                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet.</p>
 
-                                <form action="#">
-                                    <input type="number" value="1" />
-                                    <button>Add to cart</button>
-                                </form>
-                                <span><i class="fa fa-check"></i> In stock</span>
-                            
-                            }
+                                    <form asp-controller="Cart" asp-action="AddToCart" method="get">
+                                        <input type="number" value="1" disabled/>
+                                        <input type="hidden" name="Id" value="@bookModal.Id">
+                                        <input type="submit" value="Add to cart" class="btn btn-warning bold-btn">
+                                    </form>
+                                @{
+                                    var stock = "Stock";
+                                    if (bookModal.Quantity > 0)
+                                    {
+                                        stock = "In stock";
+                                    }
+                                }
+                                    <span><i class="fa fa-check"></i>@stock</span>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            
-            
+            </div>
         </div>
+
     </div>
-</div>
+}
+
 
