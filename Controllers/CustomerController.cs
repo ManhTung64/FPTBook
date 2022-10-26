@@ -44,23 +44,10 @@ namespace FPTBook.Controllers
                 TempData["MessageNull"] = "Please add book to your cart !!!";
             }
         }
-        [HttpGet]
-        public IActionResult CheckOut(int id)
-        {
-            DataCart();
-
-            var book = context.Books.Find(id);
-            ViewBag.Title = book.Title;
-            ViewBag.Quantity = book.Quantity;
-            ViewBag.Id = id;
-            ViewBag.Price = book.Price;
-            return View();
-        }
-        [HttpPost]
-        public IActionResult CheckOut(Bill bill, double price)
+        
+        public IActionResult CheckOut(Bill bill)
         {
             bill.OrderDate = DateTime.Now.Date;
-            bill.Price = price * bill.Quantity;
             bill.Id = context.Bills.ToList().Count + 1;
             context.Bills.Add(bill);
             context.SaveChanges();
@@ -74,7 +61,7 @@ namespace FPTBook.Controllers
         }
         public IActionResult ListBillOfCustomer()
         {
-            return View(context.Bills.Where(b=>b.CustomerEmail.Equals(User.Identity.Name)).ToList());
+            return View(context.Bills.Where(bill=>bill.CustomerEmail.Equals(User.Identity.Name)).ToList());
         }
         [Authorize(Roles = "Administrator")]
         [Route("/Admin/ListAccountStoreOwner")]

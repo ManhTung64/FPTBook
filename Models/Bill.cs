@@ -11,11 +11,10 @@ namespace FPTBook.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
-        public int Quantity { get; set; }
         public double Price { get; set; }
         public string CustomerEmail { get; set; }
         public DateTime OrderDate { get; set; }
-        public int BookId { get; set; }
-        public Book Book { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
     }
 }
