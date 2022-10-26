@@ -21,16 +21,9 @@ namespace FPTBook.Controllers
         public IActionResult Index()
         {
             DataCart();
-            try
-            {
-                List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart").ToList();
-                return View(cart);
-            }
-            catch(ArgumentNullException a)
-            {
-                TempData["MessageNull"] = "Please add book to your cart !!!";
-                return View();
-            }   
+            List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart").ToList();
+            ViewBag.Cart = cart;
+            return View();
         }
         public IActionResult AddToCart(int Id)
         {
@@ -50,7 +43,7 @@ namespace FPTBook.Controllers
                 }
                 else
                 {
-                    cart.Add(new Item {Id = count++, book = context.Books.Find(Id), Item_Quantity = 1, Total = context.Books.Find(Id).Price * 1 });
+                    cart.Add(new Item { Id = count++, book = context.Books.Find(Id), Item_Quantity = 1, Total = context.Books.Find(Id).Price * 1 });
                 }
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
@@ -64,7 +57,7 @@ namespace FPTBook.Controllers
             if (index != -1)
             {
                 cart.RemoveAt(index);
-                for (int i =  index; i < cart.Count; i++)
+                for (int i = index; i < cart.Count; i++)
                 {
                     cart[i].Id = i;
                 }
