@@ -1,0 +1,55 @@
+﻿@model List<Bill>
+@{
+    Layout = "__Management";
+    double sum = 0;
+    string rate = "Rating development: ";
+    double lastM = 0;
+    double rating = 0;
+    foreach(var bill in Model)
+    {
+        sum += bill.Price;
+        if (lastM > 0) 
+        {
+            if (lastM > bill.Price) rating = (lastM / bill.Price) * 100*-1;
+            else { rating = (lastM / bill.Price) * 100; }
+        }
+        rate += ""+ rating + "%." + "=> ";
+        lastM = bill.Price;
+    }
+}
+<div class="bg-light mt-2 align-content-center">
+    <h1 class="text-dark">Turnover</h1>
+    <div class="col-12 row text-dark">
+        <canvas class="col-9" id="myChart" style="width:100%;max-width:600px"></canvas>
+        <div class="col-3 row">
+            <span class="col-12">Turnover: $@sum</span>
+            <span class="col-12">@rate</span>
+        </div>
+    </div>
+</div>
+@section Scripts {
+<script> 
+        var xValues = [1,2,3,4,5];
+        var yValues = [@Model[0].Price,@Model[1].Price,@Model[2].Price,@Model[3].Price,@Model[4].Price];   
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "#eb1616",
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 0, max:1000}}],
+    }
+  }
+});
+</script>
+}

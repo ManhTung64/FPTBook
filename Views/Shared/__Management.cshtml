@@ -7,9 +7,11 @@
     <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <link rel="stylesheet" href="~/css/index/style.css"/>
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
     integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
@@ -51,6 +53,7 @@
     </style>
 </head>
 <body class="row col-lg-12">
+
   <nav class="col-lg-3 row">
       <span ><i class="fa fa-book mt-4 ml-4 text-red" style="font-size: 3em;" aria-hidden="true">Manager</i></span>
         <div class="user mt-2 ml-2">
@@ -61,7 +64,7 @@
             </div>
         </div>
         <div class="nav-admin col-lg-12 row  mt-3">
-          <a class="pt-3 pb-3 pl-4 link-ad" ><i class="fa fa-arrow-right" aria-hidden="true">Dashboard</i></a>
+          <a class="pt-3 pb-3 pl-4 link-ad" asp-controller="Customer" asp-action="DashBoard"><i class="fa fa-arrow-right" aria-hidden="true">Dashboard</i></a>
           <a class="pt-3 pb-3 pl-4 link-ad" asp-controller="Customer" asp-action="ListAccountStoreOwner"><i class="fa fa-arrow-right" aria-hidden="true">Store Owner Account</i></a>
           <a class="pt-3 pb-3 pl-4 link-ad" asp-controller="Customer" asp-action="ListAccountCustomer"><i class="fa fa-arrow-right" aria-hidden="true">Customer Account</i></a>
           <a class="pt-3 pb-3 pl-4 link-ad" asp-controller="Category" asp-action="ListRequest"><i class="fa fa-arrow-right" aria-hidden="true">Request</i></a>
@@ -89,9 +92,12 @@
          </div>
      </div>
   </main>
+  
+
   <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>

@@ -20,10 +20,6 @@ namespace FPTBook.Controllers
             return View(context.Books.ToList());
         }
 
-        //public IActionResult List()
-        //{
-        //    return View(context.Books.ToList());
-        //}
         [Authorize(Roles = "StoreOwner")]
         public IActionResult Detail(int id)
         {

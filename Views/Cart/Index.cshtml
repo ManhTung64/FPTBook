@@ -76,21 +76,23 @@ else
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
+                            <input asp-for="@Model.CustomerEmail" value="@User.Identity.Name" type="hidden">
                             <input asp-for="@Model.CustomerEmail" value="@User.Identity.Name" disabled class="form-control">
                         </div>
                         <div class="form-group">
+                            <input asp-for="@Model.Price" value="@(sum)" type="hidden">
                             <input asp-for="@Model.Price" value="@(sum)" class="form-control" disabled class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="Address" class="form-control">
+                            <input asp-for="@Model.Address" name="Address" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="Phone" class="form-control">
+                            <input asp-for="@Model.Phone" name="Phone" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <a asp-controller="Customer" asp-action="Checkout" class="btn btn-primary btn-sm">Confirm</a>
+                         <input type="submit" class="btn btn-primary btn-sm" value="Confirm"/>
                     </div>
                 </div>
             </div>

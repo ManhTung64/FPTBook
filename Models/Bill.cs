@@ -9,7 +9,7 @@ namespace FPTBook.Models
 {
     public class Bill
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public double Price { get; set; }
         public string CustomerEmail { get; set; }

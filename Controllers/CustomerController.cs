@@ -48,7 +48,7 @@ namespace FPTBook.Controllers
         public IActionResult CheckOut(Bill bill)
         {
             bill.OrderDate = DateTime.Now.Date;
-            bill.Id = context.Bills.ToList().Count + 1;
+            //bill.Id = context.Bills.ToList().Count + 1;
             context.Bills.Add(bill);
             context.SaveChanges();
             return RedirectToAction("ListBillOfCustomer");
@@ -57,10 +57,13 @@ namespace FPTBook.Controllers
         [Route("/StoreOwner/ListBill")]
         public IActionResult ListBill()
         {
+
             return View(context.Bills.ToList());
         }
+        [Authorize(Roles = "Customer")]
         public IActionResult ListBillOfCustomer()
         {
+            DataCart();
             return View(context.Bills.Where(bill=>bill.CustomerEmail.Equals(User.Identity.Name)).ToList());
         }
         [Authorize(Roles = "Administrator")]
@@ -110,8 +113,6 @@ namespace FPTBook.Controllers
             context.SaveChanges();
             return RedirectToAction("ListRequest","Category");
         }
-
-        
         public IActionResult SortTitleAsc()
         {
             DataCart();
@@ -164,6 +165,12 @@ namespace FPTBook.Controllers
         {
             DataCart();
             return View("Index",context.Books.Where(book=>book.CategoryId == id).ToList());
+        }
+        [Authorize(Roles = "Administrator")]
+        [Route("/Admin")]
+        public IActionResult DashBoard()
+        {
+            return View(context.Bills.ToList());
         }
     }
 }

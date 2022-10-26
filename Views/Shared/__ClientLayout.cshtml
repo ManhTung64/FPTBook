@@ -120,7 +120,7 @@
         </div>
         <div class="function col-lg-3">
           <div class="mt-5">
-            @if (SignInManager.IsSignedIn(User))
+                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Customer"))
 {
                  <div class="pr-2 mr-1" style="width:140px;"><a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" class="text-light bg-dark form-control pr-3"><i
       class="mt-1 fa fa-user pr-3s">My Account</i></a></div>
@@ -129,6 +129,24 @@
                     <button  type="submit" class="text-light bg-dark form-control">Logout</button>
             </form>
 }
+                        else if (User.IsInRole("Administrator"))
+                        {
+                            <div class="pr-2 mr-1" style="width:140px;"><a asp-controller="Customer" asp-action="DashBoard" title="Manage" class="text-light bg-dark form-control pr-3"><i
+      class="mt-1 fa fa-user pr-3s">Manager</i></a></div>
+
+                            <form  class="pr-1 mr-5" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" >
+                                <button type = "submit" class="text-light bg-dark form-control">Logout</button>
+                        </form>
+                        }
+                        else if (User.IsInRole("StoreOwner"))
+                        {
+                                <div class="pr-2 mr-1" style="width:140px;"><a asp-controller="Book" asp-action="Index" title="Manage" class="text-light bg-dark form-control pr-3"><i
+      class="mt-1 fa fa-user pr-3s">Manager</i></a></div>
+
+                                <form  class="pr-1 mr-5" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" >
+                                    <button type = "submit" class="text-light bg-dark form-control">Logout</button>
+                            </form>
+                        }
 else
 {
     <div class="pr-2 mr-5"><a asp-area="Identity" asp-page="/Account/Login" class="text-light bg-dark form-control"><i
