@@ -1,5 +1,6 @@
 ﻿using FPTBook.Data;
 using FPTBook.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -13,29 +14,29 @@ namespace FPTBook.Controllers
         {
             this.context = context;
         }
-
+        [Authorize(Roles = "StoreOwner")]
         public IActionResult Index()
         {
             return View(context.Books.ToList());
         }
 
-        public IActionResult List()
-        {
-            return View(context.Books.ToList());
-        }
-
+        //public IActionResult List()
+        //{
+        //    return View(context.Books.ToList());
+        //}
+        [Authorize(Roles = "StoreOwner")]
         public IActionResult Detail(int id)
         {
             return View(context.Books.Include(category => category.Category).FirstOrDefault(book => book.Id == id));
         }
-
+        [Authorize(Roles = "StoreOwner")]
         [HttpGet]
         public IActionResult Add()
         {
             ViewBag.Categories = context.Categories.ToList();
             return View();
         }
-
+        [Authorize(Roles = "StoreOwner")]
         [HttpPost]
         public IActionResult Add(Book book)
         {
@@ -52,14 +53,14 @@ namespace FPTBook.Controllers
                 return View(book);
             }
         }
-
+        [Authorize(Roles = "StoreOwner")]
         [HttpGet]
         public IActionResult Edit(int id)
         {
             ViewBag.Categories = context.Categories.ToList();
             return View(context.Books.Find(id));
         }
-
+        [Authorize(Roles = "StoreOwner")]
         [HttpPost]
         public IActionResult Edit(Book book)
         {
@@ -76,6 +77,7 @@ namespace FPTBook.Controllers
                 return View(book);
             }
         }
+        [Authorize(Roles = "StoreOwner")]
         public IActionResult Delete(int id)
         {
             context.Books.Remove(context.Books.Find(id));

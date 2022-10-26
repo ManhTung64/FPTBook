@@ -1,11 +1,13 @@
 ﻿using FPTBook.Data;
 using FPTBook.Helpers;
 using FPTBook.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace FPTBook.Controllers
@@ -64,6 +66,8 @@ namespace FPTBook.Controllers
             context.SaveChanges();
             return RedirectToAction("ListBillOfCustomer");
         }
+        [Authorize(Roles = "StoreOwner")]
+        [Route("/StoreOwner/ListBill")]
         public IActionResult ListBill()
         {
             return View(context.Bills.ToList());
@@ -72,8 +76,11 @@ namespace FPTBook.Controllers
         {
             return View(context.Bills.Where(b=>b.CustomerEmail.Equals(User.Identity.Name)).ToList());
         }
+        [Authorize(Roles = "Administrator")]
+        [Route("/Admin/ListAccountStoreOwner")]
         public IActionResult ListAccountStoreOwner()
         {
+            ViewBag.name = "Store Owner";
             LinkedList<IdentityUser> accounts = new LinkedList<IdentityUser>();
                 var storeOwnerRole = context.UserRoles.Where(s=>s.RoleId.Equals("storeOwner")).ToList();
                 if (storeOwnerRole != null)
@@ -87,6 +94,8 @@ namespace FPTBook.Controllers
                TempData["message"] = "No any account !!!";
                return View("ListAccount");
         }
+        [Authorize(Roles = "Administrator")]
+        [Route("/Admin/ListAccountCustomer")]
         public IActionResult ListAccountCustomer()
         {
             LinkedList<IdentityUser> accounts = new LinkedList<IdentityUser>();
@@ -99,19 +108,20 @@ namespace FPTBook.Controllers
                 }
                 return View("ListAccount",accounts);
             }
+            ViewBag.name = "Customer";
             TempData["message"] = "No any account !!!";
             return View("ListAccount");
         }
+        [Authorize(Roles = "Administrator")]
+        [Route("/Admin/ListAccountCustomer")]
         [HttpPost]
         public IActionResult ChangePassword(string id, string pass)
         {
-            //var hasher = PasswordHasher<IdentityUser>();
-            
             var account = context.Users.Find(id);
             var hasher = new PasswordHasher<IdentityUser>();
             account.PasswordHash = hasher.HashPassword(account,pass);
             context.SaveChanges();
-            return RedirectToAction("ListAccountCustomer");
+            return RedirectToAction("ListRequest","Category");
         }
 
         
@@ -162,6 +172,11 @@ namespace FPTBook.Controllers
                                  .Include(s => s.Category)
                                  .FirstOrDefault(s => s.Id == id);
             return View(book);
+        }
+        public IActionResult CategoryBook(int id)
+        {
+            DataCart();
+            return View("Index",context.Books.Where(book=>book.CategoryId == id).ToList());
         }
     }
 }

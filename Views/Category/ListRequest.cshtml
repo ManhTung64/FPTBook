@@ -1,29 +1,40 @@
 ﻿@model List<Request>
-
-<span class="text-danger">@TempData["message"]</span>
-<table class="table table-info">
-    <tr>
-        <th colspan="3">Request List</th>
-    </tr>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Status</th>
-        <th colspan="2">Handle</th>
-    </tr>
-    @foreach (var request in Model)
+@{
+    if (User.IsInRole("Administrator"))
     {
-            <tr>
-                <td>@request.Id</td>
-                <td>@request.Name</td>
-                <td>@request.Description</td>
-                <td>@request.Status</td>
-            @if (User.IsInRole("Administrator") && request.Status.Equals("Pending"))
+        Layout = "__Management";
+    };
+}
+@if (TempData["message"]!=null)
+{
+        <span class="text-danger">@TempData["message"]</span>
+}
+else{
+        <table class="table table-info">
+        <tr>
+            <th colspan="3">Request List</th>
+        </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th colspan="2">Handle</th>
+        </tr>
+        @foreach (var request in Model)
+        {
+                            <tr>
+                                <td>@request.Id</td>
+                                <td>@request.Name</td>
+                                <td>@request.Description</td>
+                                <td>@request.Status</td>
+                @if (User.IsInRole("Administrator") && request.Status.Equals("Pending"))
                 {
-                    <td><a asp-controller="Category" asp-action="ConfirmRequest" asp-route-id="@request.Id">Approval</a></td>
-                    <td><a asp-controller="Category" asp-action="RejectRequest" asp-route-id="@request.Id">Reject</a></td>
+                                            <td><a asp-controller="Category" asp-action="ConfirmRequest" asp-route-id="@request.Id">Approval</a></td>
+                                            <td><a asp-controller="Category" asp-action="RejectRequest" asp-route-id="@request.Id">Reject</a></td>
                 }
-            </tr>
-    }
-</table>
+                            </tr>
+        }
+
+    </table>
+}
