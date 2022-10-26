@@ -40,6 +40,10 @@ namespace FPTBook.Models
         [Required(ErrorMessage = "This field cannot be empty")]
         public string Image { get; set; }
 
+        [Required(ErrorMessage = "This field cannot be empty")]
+        [Range(100, 9999999, ErrorMessage = "Max is 9999999, min is 100")]
+        public string Description { get; set; }
+
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public ICollection<Bill> Bills { get; set; }

@@ -245,6 +245,7 @@ namespace FPTBook.Data
                     Price = 199,
                     Quantity = 5,
                     Image = "sth.png",
+                    Description = "dexplosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment",
                     CategoryId = 3
                 },
                 new Book
@@ -258,6 +259,7 @@ namespace FPTBook.Data
                     Price = 195,
                     Quantity = 10,
                     Image = "st.png",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
                     CategoryId = 2
                 },
                 new Book
@@ -271,6 +273,7 @@ namespace FPTBook.Data
                     Price = 195,
                     Quantity = 10,
                     Image = "sth.png",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
                     CategoryId = 1
                 },
                 new Book
@@ -284,6 +287,8 @@ namespace FPTBook.Data
                     Price = 2.19,
                     Quantity = 15,
                     Image = "op1.jpg",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 2
                 },
                 new Book
@@ -297,6 +302,8 @@ namespace FPTBook.Data
                     Price = 2.99,
                     Quantity = 15,
                     Image = "op2.jpg",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 2
                 },
                 new Book
@@ -310,6 +317,8 @@ namespace FPTBook.Data
                     Price = 2.09,
                     Quantity = 15,
                     Image = "op3.jpg",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 2
                 },
                 new Book
@@ -323,6 +332,8 @@ namespace FPTBook.Data
                     Price = 1.99,
                     Quantity = 7,
                     Image = "op4.jpg",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 2
                 },
                 new Book
@@ -336,6 +347,8 @@ namespace FPTBook.Data
                     Price = 2.19,
                     Quantity = 5,
                     Image = "op5.jpg",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 2
                 },
                 new Book
@@ -349,6 +362,8 @@ namespace FPTBook.Data
                     Price = 2.19,
                     Quantity = 10,
                     Image = "op6.jpg",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 2
                 },
                 new Book
@@ -362,6 +377,8 @@ namespace FPTBook.Data
                     Price = 197,
                     Quantity = 1,
                     Image = "hor1.jpg",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 1
                 },
                 new Book
@@ -375,6 +392,8 @@ namespace FPTBook.Data
                     Price = 149,
                     Quantity = 9,
                     Image = "hor2.jpg",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 1
                 },
                 new Book
@@ -388,6 +407,8 @@ namespace FPTBook.Data
                     Price = 159,
                     Quantity = 9,
                     Image = "hor3.jpg",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 1
                 },
                 new Book
@@ -401,6 +422,8 @@ namespace FPTBook.Data
                     Price = 169,
                     Quantity = 10,
                     Image = "hor4.jpg",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 1
                 },
                 new Book
@@ -414,6 +437,8 @@ namespace FPTBook.Data
                     Price = 169,
                     Quantity = 10,
                     Image = "hor5.jpg",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 1
                 },
                 new Book
@@ -427,6 +452,8 @@ namespace FPTBook.Data
                     Price = 99,
                     Quantity = 10,
                     Image = "hor6.jpg",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 1
                 },
                 new Book
@@ -440,6 +467,8 @@ namespace FPTBook.Data
                     Price = 599,
                     Quantity = 100,
                     Image = "sc1.webp",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 3
                 },
                 new Book
@@ -453,6 +482,8 @@ namespace FPTBook.Data
                     Price = 5999,
                     Quantity = 100,
                     Image = "sc2.webp",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 3
                 },
                 new Book
@@ -466,6 +497,8 @@ namespace FPTBook.Data
                     Price = 59,
                     Quantity = 5,
                     Image = "sc8.webp",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 3
                 },
                 new Book
@@ -479,6 +512,8 @@ namespace FPTBook.Data
                     Price = 29.6,
                     Quantity = 19,
                     Image = "sc3.webp",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 3
                 },
                 new Book
@@ -492,6 +527,8 @@ namespace FPTBook.Data
                     Price = 225.2,
                     Quantity = 3,
                     Image = "sc4.webp",
+                    Description = "In the era of economic development, digital transformation is taking place rapidly, the demand for energy use and storage is enormous. Therefore, the use of power storage devices to be able to\r\ncharge electrical devices is a lot. Batteries are an incredibly efficient storage tool that can be reused over and over again. With the explosion of electric cars today, the use of electric cars is a solution to replace cars using gasoline fuels to limit gas emissions into the environment. However, when used a lot, it will lead to battery bottles, reducing the storage capacity of the battery. Currently, people are faced with the elimination of a large number of electric vehicle batteries. Thereby, increasing the amount of batteries discharged into the environment, causing great environmental pollution. As a member of the research and development department, I was assigned a small project to explore solutions to the impact of digital terminals and how to reduce their impact on the environment or functionality. potential to refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 3
                 },
                 new Book
@@ -505,6 +542,8 @@ namespace FPTBook.Data
                     Price = 9999,
                     Quantity = 3,
                     Image = "sc11.webp",
+                    Description = "In the era offficlectr e of the refurbish, repair and reuse digital devices instead of replacing them. And the main topic that I will talk about in this report is ",
+
                     CategoryId = 3
                 }
                 );

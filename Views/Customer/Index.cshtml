@@ -54,15 +54,15 @@
 @foreach(var bookModal in Model)
 {
     var modal = "myModal" + bookModal.Id + "";
-    <div class="modal fade" id="@modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade bd-example-modal-lg" id="@modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" >
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
                 </div>
-                    <div class="modal-body">
+                    <div class="modal-body" >
                         <div class="row">
-                            <div class="col-md-5 col-sm-5 col-xs-12">
+                            <div class="col-md-5 col-sm-5 col-xs-15">
                                 <div class="modal-tab">
                                     <div class="product-details-large tab-content">
                                         <div class="tab-pane active" id="image-1">
@@ -74,10 +74,14 @@
                             <div class="col-md-7 col-sm-7 col-xs-12">
                                 <div class="modal-pro-content">
                                 <h3>@bookModal.Title</h3>
+                                <h3>Author: @bookModal.Author</h3>
+                                <h6>Publisher: @bookModal.Publisher</h6>
                                     <div class="price">
-                                    <span>$@bookModal.Price</span>
+                                        
+                                    <span>Price: $@bookModal.Price</span>
                                     </div>
-                                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet.</p>
+                                    
+                                    <p class="text-justify">Description: @bookModal.Description</p>
 
                                     <form asp-controller="Cart" asp-action="AddToCart" method="get">
                                         <input type="number" value="1" disabled/>
