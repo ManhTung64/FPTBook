@@ -111,7 +111,7 @@ namespace FPTBook.Controllers
             var hasher = new PasswordHasher<IdentityUser>();
             account.PasswordHash = hasher.HashPassword(account,pass);
             context.SaveChanges();
-            return RedirectToAction("ListRequest","Category");
+            return RedirectToAction("DashBoard");
         }
         public IActionResult SortTitleAsc()
         {
